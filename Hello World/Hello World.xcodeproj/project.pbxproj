@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		456F8FDA1D0E236200608B31 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 456F8FD91D0E236200608B31 /* CoreLocation.framework */; };
+		456F8FDC1D0E28AE00608B31 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456F8FDB1D0E28AE00608B31 /* Item.swift */; };
 		45AA4F1E1D0BAE1F007BC071 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AA4F1D1D0BAE1F007BC071 /* AppDelegate.swift */; };
 		45AA4F201D0BAE1F007BC071 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AA4F1F1D0BAE1F007BC071 /* ViewController.swift */; };
 		45AA4F231D0BAE1F007BC071 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45AA4F211D0BAE1F007BC071 /* Main.storyboard */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		456F8FD91D0E236200608B31 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		456F8FDB1D0E28AE00608B31 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		45AA4F1A1D0BAE1F007BC071 /* Hello World.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hello World.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		45AA4F1D1D0BAE1F007BC071 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45AA4F1F1D0BAE1F007BC071 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				456F8FDA1D0E236200608B31 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +43,7 @@
 		45AA4F111D0BAE1F007BC071 = {
 			isa = PBXGroup;
 			children = (
+				456F8FD91D0E236200608B31 /* CoreLocation.framework */,
 				45AA4F1C1D0BAE1F007BC071 /* Hello World */,
 				45AA4F1B1D0BAE1F007BC071 /* Products */,
 			);
@@ -60,6 +66,7 @@
 				45AA4F241D0BAE1F007BC071 /* Assets.xcassets */,
 				45AA4F261D0BAE1F007BC071 /* LaunchScreen.storyboard */,
 				45AA4F291D0BAE1F007BC071 /* Info.plist */,
+				456F8FDB1D0E28AE00608B31 /* Item.swift */,
 			);
 			path = "Hello World";
 			sourceTree = "<group>";
@@ -96,6 +103,7 @@
 				TargetAttributes = {
 					45AA4F191D0BAE1F007BC071 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = GYH3TK45ZC;
 					};
 				};
 			};
@@ -136,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45AA4F201D0BAE1F007BC071 /* ViewController.swift in Sources */,
+				456F8FDC1D0E28AE00608B31 /* Item.swift in Sources */,
 				45AA4F1E1D0BAE1F007BC071 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,10 +258,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Hello World/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.philibertd.Hello-World";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -260,10 +272,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Hello World/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.philibertd.Hello-World";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -286,6 +301,7 @@
 				45AA4F2E1D0BAE1F007BC071 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

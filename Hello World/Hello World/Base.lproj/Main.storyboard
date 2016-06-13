@@ -26,23 +26,44 @@
                                 <size key="shadowOffset" width="8" height="6"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJl-nZ-CnI">
-                                <rect key="frame" x="148" y="353" width="111" height="30"/>
-                                <state key="normal" title="Press Me Bro">
+                                <rect key="frame" x="44" y="358" width="111" height="30"/>
+                                <state key="normal" title="Monitor">
                                     <color key="titleColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="submit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bFI-Qg-5zS"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V2k-6v-Nbv">
                                 <rect key="frame" x="44" y="264" width="318" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cvu-AC-LPj">
+                                <rect key="frame" x="218" y="358" width="111" height="30"/>
+                                <state key="normal" title="Stop Monitor">
+                                    <color key="titleColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="break:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L7J-pe-PF8"/>
+                                    <action selector="breakMonitor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fn0-Ai-WoP"/>
+                                    <action selector="submit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dff-LR-jzd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="label" destination="OkE-H0-7iu" id="lNh-nj-SPR"/>
+                        <outlet property="password" destination="V2k-6v-Nbv" id="rNz-ff-Zbh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
