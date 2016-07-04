@@ -1,5 +1,13 @@
 package com.contactz.ibeacon;
 
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothGatt;
+import android.bluetooth.BluetoothGattService;
+import android.bluetooth.le.AdvertiseCallback;
+import android.bluetooth.le.AdvertiseData;
+import android.bluetooth.le.AdvertiseSettings;
+import android.bluetooth.le.BluetoothLeAdvertiser;
+import android.os.ParcelUuid;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,28 +22,40 @@ import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
-    private BeaconManager beaconManager;
-    private Region region;
+    private BluetoothAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        beaconManager = new BeaconManager(this);
-        region = new Region("Estimotes",
-                UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"), null, null);
+        AdvertiseData.Builder dataBuilder = new AdvertiseData.Builder();
+        AdvertiseSettings.Builder settingsBuilder = new AdvertiseSettings.Builder();
 
-        beaconManager.setRangingListener(new BeaconManager.RangingListener() {
+        String serviceUuid = "02FD04F4-CFFF-4573-B478-F7470A7CF2F2";
+        ParcelUuid uuid = new ParcelUuid(UUID.fromString(serviceUuid));
+        dataBuilder.addServiceUuid(uuid);
+        Log.e("BLE", Integer.toString("philibert".getBytes().length));
+        settingsBuilder.setAdvertiseMode(AdvertiseSettings.ADVERTISE_MODE_BALANCED);
+        settingsBuilder.setConnectable(true);
+
+        adapter = BluetoothAdapter.getDefaultAdapter();
+        BluetoothLeAdvertiser advertiser = adapter.getBluetoothLeAdvertiser();
+        AdvertiseCallback advertisingCallback = new AdvertiseCallback() {
             @Override
-            public void onBeaconsDiscovered(Region region, List<Beacon> list) {
-                Log.w("Beacons", list.toString());
-                if (list.size() > 0) {
-                    Beacon nearestBeacon = list.get(0);
-                    Log.w("Message", nearestBeacon.getProximityUUID().toString());
-                }
+            public void onStartSuccess(AdvertiseSettings settingsInEffect) {
+                Log.e("BLE", "Success");
+                super.onStartSuccess(settingsInEffect);
             }
-        });
+
+            @Override
+            public void onStartFailure(int errorCode) {
+                Log.e( "BLE", "Advertising onStartFailure: " + errorCode );
+                super.onStartFailure(errorCode);
+            }
+        };
+        advertiser.startAdvertising(settingsBuilder.build(), dataBuilder.build(),advertisingCallback);
+        pushData();
     }
 
     @Override
@@ -43,19 +63,14 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         SystemRequirementsChecker.checkWithDefaultDialogs(this);
-
-        beaconManager.connect(new BeaconManager.ServiceReadyCallback() {
-            @Override
-            public void onServiceReady() {
-                beaconManager.startRanging(region);
-            }
-        });
     }
 
     @Override
     protected void onPause() {
-        beaconManager.stopRanging(region);
-
         super.onPause();
+    }
+
+    private void pushData() {
+        BluetoothGattService mCustomService = new BluetoothGatt().getService(UUID.fromString("02FD04F4-CFFF-4573-B478-F7470A7CF2F2"));
     }
 }

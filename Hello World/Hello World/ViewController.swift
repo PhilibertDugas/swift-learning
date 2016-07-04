@@ -14,7 +14,6 @@ import CoreBluetooth
 class ViewController: UIViewController, CLLocationManagerDelegate, CBPeripheralManagerDelegate {
 
     @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var password: UITextField!
     
     var locationManager = CLLocationManager()
     var peripheralManager = CBPeripheralManager()
@@ -28,8 +27,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, CBPeripheralM
         
         let region = CLBeaconRegion(
             proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!,
-            major: 1,
-            minor: 67,
             identifier: "Estimotes"
         )
         if (CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedWhenInUse) {
